@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0"
+>
+
+<title>
+
+RiskRecon Results
+
+</title>
+
+<link
+rel="stylesheet"
+href="/static/style.css"
+>
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<h1 class="logo">
+
+RiskRecon
+
+</h1>
+
+<p class="version">
+
+v2.5
+
+</p>
+
+<nav>
+
+<a href="/">
+
+Dashboard
+
+</a>
+
+<a href="/profile">
+
+Profile
+
+</a>
+
+<a
+href="/logout"
+class="danger"
+>
+
+Logout
+
+</a>
+
+</nav>
+
+<div class="status-box">
+
+<h4>
+
+Assessment Status
+
+</h4>
+
+<p>
+
+Scan Complete
+
+</p>
+
+<p>
+
+Engine Active
+
+</p>
+
+</div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main-content">
+
+<div class="hero">
+
+<h1>
+
+Risk Assessment Results
+
+</h1>
+
+<p>
+
+Target:
+<b>
+
+{{domain}}
+
+</b>
+
+</p>
+
+</div>
+
+
+<!-- TOP CARDS -->
+
+<div class="dashboard">
+
+<div class="card">
+
+<h3>
+
+Risk Score
+
+</h3>
+
+<h1>
+
+{{risk_score}}
+
+</h1>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+
+Severity
+
+</h3>
+
+<p class="risk {{severity}}">
+
+{{severity}}
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+
+Findings
+
+</h3>
+
+<h1>
+
+{{vuln_count}}
+
+</h1>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+
+Mode
+
+</h3>
+
+<p>
+
+{{mode}}
+
+</p>
+
+</div>
+
+</div>
+
+
+<!-- SECURITY POSTURE -->
+
+<div class="card big-card">
+
+<h2>
+
+Security Posture
+
+</h2>
+
+<h1>
+
+{{posture.score}}/100
+
+</h1>
+
+<h2>
+
+Grade:
+
+{{posture.grade}}
+
+</h2>
+
+<p>
+
+{{posture.status}}
+
+</p>
+
+</div>
+
+
+<!-- EXPLANATIONS -->
+
+<h2>
+
+Threat Intelligence
+
+</h2>
+
+<div class="card big-card">
+
+<ul class="explanations">
+
+{% for reason in explanations %}
+
+<li>
+
+{{reason}}
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+
+<!-- OWASP -->
+
+<h2>
+
+OWASP Compliance
+
+</h2>
+
+<table class="history-table">
+
+<tr>
+
+<th>Standard</th>
+
+<th>Category</th>
+
+<th>Status</th>
+
+<th>Reason</th>
+
+</tr>
+
+{% for item in compliance %}
+
+<tr>
+
+<td>
+
+{{item.standard}}
+
+</td>
+
+<td>
+
+{{item.title}}
+
+</td>
+
+<td>
+
+{{item.status}}
+
+</td>
+
+<td>
+
+{{item.reason}}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+<!-- RECOMMENDATIONS -->
+
+<h2>
+
+Recommendations
+
+</h2>
+
+{% for rec in recommendations %}
+
+<div class="card big-card">
+
+<h3>
+
+{{rec.issue}}
+
+</h3>
+
+<p>
+
+Severity:
+<b>
+
+{{rec.severity}}
+
+</b>
+
+</p>
+
+<p>
+
+{{rec.recommendation}}
+
+</p>
+
+</div>
+
+{% endfor %}
+
+
+<!-- TERMINAL -->
+
+<div class="terminal-box">
+
+<p>
+
+> Scan complete
+
+</p>
+
+<p>
+
+> Intelligence generated
+
+</p>
+
+<p>
+
+> Awaiting next target...
+
+</p>
+
+</div>
+
+</main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0"
+>
+
+<title>
+
+RiskRecon Profile
+
+</title>
+
+<link
+rel="stylesheet"
+href="/static/style.css"
+>
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div>
+
+<h1 class="logo">
+
+RiskRecon
+
+</h1>
+
+<p class="version">
+
+v2.5
+
+</p>
+
+</div>
+
+<nav>
+
+<a href="/">
+
+Dashboard
+
+</a>
+
+<a href="/profile">
+
+Profile
+
+</a>
+
+<a
+href="/logout"
+class="danger"
+>
+
+Logout
+
+</a>
+
+</nav>
+
+<div class="status-box">
+
+<h4>
+
+User Status
+
+</h4>
+
+<p>
+
+Logged In
+
+</p>
+
+<p>
+
+History Active
+
+</p>
+
+</div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main-content">
+
+<div class="profile-header">
+
+<h1>
+
+{{username}}
+
+</h1>
+
+<p>
+
+Recon Activity Center
+
+</p>
+
+</div>
+
+
+<!-- QUICK STATS -->
+
+<div class="top-cards">
+
+<div class="mini-card">
+
+<h3>
+
+{{history|length}}
+
+</h3>
+
+<p>
+
+Total Scans
+
+</p>
+
+</div>
+
+<div class="mini-card">
+
+<h3>
+
+RiskRecon
+
+</h3>
+
+<p>
+
+Security Engine
+
+</p>
+
+</div>
+
+<div class="mini-card">
+
+<h3>
+
+Reports
+
+</h3>
+
+<p>
+
+Available
+
+</p>
+
+</div>
+
+</div>
+
+
+<h2>
+
+Recent Scan History
+
+</h2>
+
+
+{% if history %}
+
+<table class="history-table">
+
+<tr>
+
+<th>Domain</th>
+
+<th>Mode</th>
+
+<th>Risk Score</th>
+
+<th>Severity</th>
+
+<th>Time</th>
+
+<th>Report</th>
+
+</tr>
+
+
+{% for item in history %}
+
+<tr>
+
+<td>
+
+{{item.domain}}
+
+</td>
+
+<td>
+
+{{item.mode}}
+
+</td>
+
+<td>
+
+{{item.risk_score}}
+
+</td>
+
+<td>
+
+<span class="severity {{item.severity}}">
+
+{{item.severity}}
+
+</span>
+
+</td>
+
+<td>
+
+{{item.time}}
+
+</td>
+
+<td>
+
+<a
+href="/download/{{item.report}}"
+>
+
+Download
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<div class="empty-state">
+
+<h3>
+
+No scans available
+
+</h3>
+
+<p>
+
+Start a reconnaissance scan to build history.
+
+</p>
+
+</div>
+
+{% endif %}
+
+
+<div class="terminal-box">
+
+<p>
+
+> Profile initialized</p>
+
+<p>
+
+> Scan history loaded</p>
+
+<p>
+
+> Awaiting next target...</p>
+
+</div>
+
+</main>
+
+</div>
+
+</body>
+</html>

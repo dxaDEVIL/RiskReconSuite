@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+
+RiskRecon Suite
+
+</title>
+
+<link
+rel="stylesheet"
+href="/static/style.css"
+>
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com"
+>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap"
+rel="stylesheet"
+>
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div>
+
+<h1 class="logo">
+
+RiskRecon
+
+</h1>
+
+<p class="version">
+
+v2.5
+
+</p>
+
+</div>
+
+<nav>
+
+<a href="/" class="nav-item">
+
+Dashboard
+
+</a>
+
+<a href="/profile" class="nav-item">
+
+{{username}}
+
+</a>
+
+<a href="/logout" class="nav-item danger">
+
+Logout
+
+</a>
+
+</nav>
+
+<div class="status-box">
+
+<h4>
+
+System Status
+
+</h4>
+
+<p>
+
+Recon Engine:
+ONLINE
+
+</p>
+
+<p>
+
+Risk Engine:
+ONLINE
+
+</p>
+
+<p>
+
+Modules:
+ACTIVE
+
+</p>
+
+</div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main-content">
+
+<div class="hero">
+
+<h1>
+
+RiskRecon Suite
+
+</h1>
+
+<p class="subtitle">
+
+Automated Reconnaissance & Security Intelligence Platform
+
+</p>
+
+</div>
+
+
+<!-- QUICK STATS -->
+
+<div class="top-cards">
+
+<div class="mini-card">
+
+<h3>
+
+DNS
+
+</h3>
+
+<p>
+
+Fingerprinting
+
+</p>
+
+</div>
+
+<div class="mini-card">
+
+<h3>
+
+OWASP
+
+</h3>
+
+<p>
+
+Compliance
+
+</p>
+
+</div>
+
+<div class="mini-card">
+
+<h3>
+
+Ports
+
+</h3>
+
+<p>
+
+Enumeration
+
+</p>
+
+</div>
+
+<div class="mini-card">
+
+<h3>
+
+Intel
+
+</h3>
+
+<p>
+
+Analysis
+
+</p>
+
+</div>
+
+</div>
+
+
+<!-- SCAN PANEL -->
+
+<form
+action="/scan"
+method="POST"
+id="scanForm"
+class="scan-box"
+>
+
+<h2>
+
+Launch Scan
+
+</h2>
+
+<input
+
+type="text"
+
+name="domain"
+
+placeholder="example.com"
+
+required
+
+class="domain-input"
+
+>
+
+
+<div class="scan-modes">
+
+<h3>
+
+Select Mode
+
+</h3>
+
+<label class="mode">
+
+<input
+type="radio"
+name="mode"
+value="simple"
+checked
+>
+
+Simple
+
+</label>
+
+<label class="mode">
+
+<input
+type="radio"
+name="mode"
+value="complex"
+>
+
+Complex
+
+</label>
+
+</div>
+
+
+<div class="warning-box">
+
+⚠ Only scan systems you own
+or are authorized to assess.
+
+</div>
+
+
+<div class="consent">
+
+<label>
+
+<input
+type="checkbox"
+name="consent"
+required
+>
+
+I confirm authorization
+
+</label>
+
+</div>
+
+
+<button
+class="scan-btn"
+id="scanBtn"
+>
+
+START RECON
+
+</button>
+
+</form>
+
+
+<!-- LOADER -->
+
+<div
+id="loader"
+style="display:none;"
+>
+
+<div class="spinner">
+
+</div>
+
+<h2>
+
+Running Scan
+
+</h2>
+
+<p id="status">
+
+Initializing
+
+</p>
+
+<div class="scan-progress">
+
+<div id="progress-bar">
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TERMINAL -->
+
+<div class="terminal-box">
+
+<p>
+
+> RiskRecon initialized
+
+</p>
+
+<p>
+
+> Modules loaded
+
+</p>
+
+<p>
+
+> Waiting for target...
+
+</p>
+
+</div>
+
+</main>
+
+</div>
+
+
+<script>
+
+const messages=[
+
+"Resolving DNS",
+
+"Fingerprinting Technologies",
+
+"Checking Security Headers",
+
+"Enumerating Assets",
+
+"Analyzing Services",
+
+"Running Intelligence Engine",
+
+"Generating Risk Profile"
+
+]
+
+document
+.getElementById("scanForm")
+.addEventListener(
+
+"submit",
+
+function(){
+
+document
+.getElementById("loader")
+.style.display="block"
+
+document
+.getElementById("scanBtn")
+.disabled=true
+
+let i=0
+
+let progress=0
+
+setInterval(()=>{
+
+document
+.getElementById(
+"status"
+).innerText=
+
+messages[
+i%messages.length
+]
+
+i++
+
+if(progress<100){
+
+progress+=10
+
+document
+.getElementById(
+"progress-bar"
+)
+.style.width=
+
+progress+"%"
+
+}
+
+},1200)
+
+}
+
+)
+
+</script>
+
+</body>
+</html>

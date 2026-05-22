@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0"
+>
+
+<title>
+
+RiskRecon Login
+
+</title>
+
+<link
+rel="stylesheet"
+href="/static/style.css"
+>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap"
+rel="stylesheet"
+>
+
+</head>
+
+<body class="auth-body">
+
+<div class="matrix-bg"></div>
+
+<div class="auth-container">
+
+<div class="auth-card">
+
+<h1 class="auth-logo">
+
+RiskRecon
+
+</h1>
+
+<p class="auth-sub">
+
+Security Intelligence Platform
+
+</p>
+
+<form
+method="POST"
+id="loginForm"
+>
+
+<input
+
+class="auth-input"
+
+name="username"
+
+placeholder="Username"
+
+required
+
+>
+
+<input
+
+class="auth-input"
+
+type="password"
+
+name="password"
+
+placeholder="Password"
+
+required
+
+>
+
+<button
+class="auth-btn"
+id="loginBtn"
+>
+
+ACCESS CONSOLE
+
+</button>
+
+</form>
+
+<div
+id="loginLoader"
+style="display:none;"
+>
+
+<div class="spinner"></div>
+
+<p>
+
+Authenticating...
+
+</p>
+
+</div>
+
+<p class="auth-link">
+
+No account?
+
+<a href="/signup">
+
+Create Access
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+document
+.getElementById(
+"loginForm"
+)
+.addEventListener(
+
+"submit",
+
+function(){
+
+document
+.getElementById(
+"loginBtn"
+)
+disabled=true
+
+document
+.getElementById(
+"loginLoader"
+)
+style.display="block"
+
+}
+
+)
+
+</script>
+
+</body>
+</html>

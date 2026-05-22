@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0"
+>
+
+<title>
+
+RiskRecon Signup
+
+</title>
+
+<link
+rel="stylesheet"
+href="/static/style.css"
+>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap"
+rel="stylesheet"
+>
+
+</head>
+
+<body class="auth-body">
+
+<div class="matrix-bg"></div>
+
+<div class="auth-container">
+
+<div class="auth-card">
+
+<h1 class="auth-logo">
+
+RiskRecon
+
+</h1>
+
+<p class="auth-sub">
+
+Create Security Console Access
+
+</p>
+
+<form
+method="POST"
+id="signupForm"
+>
+
+<input
+
+class="auth-input"
+
+name="username"
+
+placeholder="Username"
+
+required
+
+>
+
+<input
+
+class="auth-input"
+
+type="password"
+
+name="password"
+
+placeholder="Password"
+
+required
+
+>
+
+<button
+class="auth-btn"
+id="signupBtn"
+>
+
+INITIALIZE ACCOUNT
+
+</button>
+
+</form>
+
+<div
+id="signupLoader"
+style="display:none;"
+>
+
+<div class="spinner">
+
+</div>
+
+<p>
+
+Creating account...
+
+</p>
+
+</div>
+
+<p class="auth-link">
+
+Already have access?
+
+<a href="/login">
+
+Login Console
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+document
+.getElementById(
+"signupForm"
+)
+.addEventListener(
+
+"submit",
+
+function(){
+
+document
+.getElementById(
+"signupBtn"
+).disabled=true
+
+document
+.getElementById(
+"signupLoader"
+).style.display="block"
+
+}
+
+)
+
+</script>
+
+</body>
+</html>
