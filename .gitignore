@@ -1,11 +1,9 @@
-venv/
+.env
 __pycache__/
 *.pyc
-
-data/users/*
+venv/
 data/results/*
+data/users/*
 
-!data/users/.gitkeep
-!data/results/.gitkeep
-
-.env
+reports/pdfs/*
+*.pdf
